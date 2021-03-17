@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <title>Webgazer.js + location post</title>
+</head>
+<body>
+  <script src="./webgazer.js"></script>
+  <script>
+			webgazer.begin()
+			webgazer.setGazeListener(function(data, elapsedTime) {
+				if (data == null) {
+					return;
+				}		
+				var xprediction = data.x; //these x coordinates are relative to the viewport
+				var yprediction = data.y; //these y coordinates are relative to the viewport
+				console.log(elapsedTime); //elapsed time is based on time since begin was called
+				ajax('POST', "http://127.0.0.1:8080/", 'xy='+xprediction.toString()+' '+yprediction.toString());
+			}).begin();	
+			function ajax(method, url, val) { 
+			let xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4) {
+					if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+						content.innerHTML = xhr.responseText;
+						
+					} else {
+						alert('Request was unsuccessful: ' + xhr.status);
+					}
+				}
+			};
+		 
+			xhr.open(method, url, true);   
+			if(val) {
+			  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
+			}
+			xhr.send(val);
+			}
+	</script>
+</body>
