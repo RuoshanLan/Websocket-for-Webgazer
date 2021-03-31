@@ -27,7 +27,7 @@ Unfortunately, since we don't have the exact same experiment setting, we tried t
 #### The accuracy is not high enough and could be affected easily by many causes:
 Although the webgazer achieves great progress compared with other projects using web cameras. But its prediction accuracy is still relatively low compared with commercial solutions. For example, the pupil tracking technology[<sup>[3]</sup>](#pupil-eye-tracking-paper) used in bionic tracking. It only has an average error of 1.3 pixels. What's worse, there are still a lot of causes that may lead to failure of prediction.
 
-##### The following cause could affect the accuracy: 
+##### The following causes could affect the accuracy: 
 The following two causes are from the paper of webgazer:
 1. The speed of the external libraries can have a significant effect on WebGazer’s ability to match correctly frames and locations on the screen. 
 2. Head movement can also affect the detected images that correspond to eye patches.
